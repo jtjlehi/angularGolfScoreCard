@@ -11,7 +11,7 @@ export interface GolfCourse {
     holes: any[];
     // todo make an interface for holes
     href: string;
-    id: string;
+    id: number;
     inserted: string;
     links: object;
     local_max_rank: number;

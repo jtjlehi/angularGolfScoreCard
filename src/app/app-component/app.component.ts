@@ -14,6 +14,7 @@ export class AppComponent {
   title = 'Golf';
   golfCourses: GolfCourses;
   golfCourseArray: GolfCourse[];
+  course: GolfCourse;
 
   constructor(private golfCourseService: GolfCourseService) { }
 
@@ -22,7 +23,12 @@ export class AppComponent {
     this.golfCourseService.getGolfCourses(4, 5, 5).subscribe((golfCourses: GolfCourses) => {
       this.golfCourses = golfCourses;
       this.golfCourseArray = golfCourses.courses;
-      console.log(this.golfCourseArray);
+      this.golfCourseArray.forEach((currentCourse, index, array) => {
+        this.golfCourseService.getGolfCourse(currentCourse.id).subscribe((course: GolfCourse) => {
+          this.course = course;
+          console.log(course);
+        });
+      });
     });
   }
 

@@ -21,4 +21,8 @@ export class GolfCourseService {
     });
   }
 
+  getGolfCourse(id: number): Observable<GolfCourse> {
+    return this.httpClient.get<GolfCourse>(`${this.url}/${id}`);
+  }
+
 }
