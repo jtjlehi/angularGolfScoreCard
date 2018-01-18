@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 // Golf course interface
 import { GolfCourse } from './golf-course.interface';
+import { GolfCourses } from './golf-courses.interface';
 
 @Injectable()
 export class GolfCourseService {
@@ -12,8 +13,8 @@ export class GolfCourseService {
 
   constructor(private httpClient:  HttpClient) { }
 
-  getGolfCourses(latitude: number, longitude: number, radius: number): Observable<GolfCourse[]> {
-    return this.httpClient.post<GolfCourse[]>(this.url, {
+  getGolfCourses(latitude: number, longitude: number, radius: number): Observable<GolfCourses> {
+    return this.httpClient.post<GolfCourses>(this.url, {
       latitude: 40.396419,
       longitude: -111.9328359,
       radius: 10
