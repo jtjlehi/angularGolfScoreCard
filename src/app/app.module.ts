@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app-component/app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { GolfCourseService } from './golf-course-service/golf-course.service';
 
 
 @NgModule({
@@ -12,9 +14,12 @@ import { AppComponent } from './app-component/app.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    GolfCourseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
