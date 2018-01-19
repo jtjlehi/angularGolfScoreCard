@@ -15,7 +15,7 @@ export interface GolfCourse {
     href: string;
     id: number;
     inserted: string;
-    links: object;
+    links: Object;
     local_max_rank: number;
     local_rank: number;
     location: {
