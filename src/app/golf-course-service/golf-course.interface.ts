@@ -1,3 +1,6 @@
+import { Holes } from "./holes.interface";
+import { TeeType } from "./tee-types.interface";
+
 // tslint:disable-next-line:no-empty-interface
 export interface GolfCourse {
     addr_1: string;
@@ -8,8 +11,7 @@ export interface GolfCourse {
     global_max_rank: number;
     global_rank: number;
     hole_count: number;
-    holes: any[];
-    // todo make an interface for holes
+    holes: Holes[];
     href: string;
     id: number;
     inserted: string;
@@ -29,7 +31,7 @@ export interface GolfCourse {
     state_or_province: string;
     status: string;
     // todo make an interface for tee-types
-    tee_types: any[];
+    tee_types: TeeType[];
     thumbnail: string;
     type: string;
     updated: string;
