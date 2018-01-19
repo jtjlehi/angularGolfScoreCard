@@ -1,16 +1,8 @@
 <header>
   <div class='leftNav'>
-    <div class='wideScreenNav'>
-      <button mat-button>Card 1</button>
-    </div>
-    <div class='smallScreenNav'>
-      <mat-menu #menu='matMenu' [overlapTrigger]='false' xPosition='before'>
-        <button mat-menu-item>Card 1</button>
-      </mat-menu>
-      <button mat-button [matMenuTriggerFor]='menu'>Cards</button>
-    </div>
+    <golf-left-nav></golf-left-nav>
   </div>
   <div class='rightNav'>
-    <mat-icon>more_vert</mat-icon>
+    <golf-right-nav></golf-right-nav>
   </div>
 </header>

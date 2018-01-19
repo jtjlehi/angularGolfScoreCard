@@ -6,24 +6,8 @@ header {
     @include mat-elevation(4);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     div {
         height: 100%;
-        button {
-            height: 100%;
-        }
-    }
-}
-.wideScreenNav {
-    display: none;
-}
-.smallScreenNav {
-    display: flex;
-}
-@media (min-width: 480px) {
-    .wideScreenNav {
-        display: flex;
-    }
-    .smallScreenNav {
-        display: none;
     }
 }

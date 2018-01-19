@@ -1,3 +1,9 @@
-<p>
-  right-nav works!
-</p>
+<button mat-icon-button [matMenuTriggerFor]='appMenu'>
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #appMenu='matMenu'>
+  <button mat-menu-item>Start New Card</button>
+  <button mat-menu-item>Clear Current Card</button>
+  <button mat-menu-item>Feedback</button>
+  <button mat-menu-item>Help</button>
+</mat-menu>

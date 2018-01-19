@@ -1,0 +1,21 @@
+.wideScreenNav {
+    display: none;
+}
+.smallScreenNav {
+    display: flex;
+}
+@media (min-width: 480px) {
+    .wideScreenNav {
+        display: flex;
+    }
+    .smallScreenNav {
+        display: none;
+    }
+}
+div {
+    height: 100%;
+    button {
+        height: 100%;
+        font-size: 1em;
+    }
+}
