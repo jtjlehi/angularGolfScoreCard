@@ -4,7 +4,8 @@ import { GolfCourseService } from '../golf-course-service/golf-course.service';
 import { GolfCourse } from '../golf-course-service/golf-course.interface';
 import { GolfCourses } from '../golf-course-service/golf-courses.interface';
 import { TeeType } from '../golf-course-service/tee-types.interface';
-import { Holes, TeeBox } from '../golf-course-service/holes.interface';
+import { Holes } from '../golf-course-service/holes.interface';
+import { TeeBox } from '../golf-course-service/tee-box.interface';
 
 @Component({
   selector: 'golf-course-loader',
