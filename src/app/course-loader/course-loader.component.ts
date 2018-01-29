@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+// interfaces
 import { GolfCourseService } from '../golf-course-service/golf-course.service';
 import { GolfCourse } from '../golf-course-service/golf-course.interface';
 import { GolfCourses } from '../golf-course-service/golf-courses.interface';
+import { TeeType } from '../golf-course-service/tee-types.interface';
+import { Holes, TeeBox } from '../golf-course-service/holes.interface';
 
 @Component({
   selector: 'golf-course-loader',
@@ -13,6 +16,10 @@ export class CourseLoaderComponent implements OnInit {
   golfCourses: GolfCourses;
   golfCourseArray: GolfCourse[];
   course: GolfCourse;
+  teeTypes: TeeType[];
+  teeType: TeeType;
+  holes: Holes[];
+  teeHoles: TeeBox[];
 
   constructor(private golfCourseService: GolfCourseService) { }
 
@@ -29,7 +36,9 @@ export class CourseLoaderComponent implements OnInit {
   selectCourse() {
     this.golfCourseService.getGolfCourse(this.golfCourseArray[0].id).subscribe(course => {
       this.course = course.course;
-      console.log(this.course);
+      this.teeTypes = course.course.tee_types;
+      this.holes = course.course.holes;
+      console.log(this.holes);
     });
   }
 

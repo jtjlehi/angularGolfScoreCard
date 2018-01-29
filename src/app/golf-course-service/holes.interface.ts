@@ -11,7 +11,7 @@ export interface Holes {
     tee_boxes: TeeBox[];
 }
 
-interface TeeBox {
+export interface TeeBox {
     course_hole_id: number;
     hcp: number;
     id: number;
