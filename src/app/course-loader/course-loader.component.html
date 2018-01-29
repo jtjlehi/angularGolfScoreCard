@@ -1,22 +1,31 @@
 <mat-horizontal-stepper linear>
-  <mat-step label='Find Course' >
-    <button mat-button
-            matStepperNext
-            color='primary'
-            (click)='findCourses()' >FIND COURSES</button>
+  <mat-step label='Find Course' [stepControl]='findCoursesForm' >
+    <form [formGroup]='findCourseForm' >
+      <mat-form-field>
+        <input matInput type='number' [formControl]='zipcode' >
+      </mat-form-field>
+      <button mat-button
+              matStepperNext
+              color='primary'
+              (click)='searchCourses()' >FIND COURSES</button>
+    </form>
   </mat-step>
-  <mat-step label='Choose Course' >
-    <button mat-button
-            matStepperNext
-            color='primary'
-            (click)='selectCourse()' >CHOOSE COURSE</button>
+  <mat-step label='Choose Course' [stepControl]='chooseCourseForm' >
+    <form [formGroup]='chooseCourseForm'>
+      <button mat-button
+              matStepperNext
+              color='primary'
+              (click)='selectCourse()' >CHOOSE COURSE</button>
+    </form>
   </mat-step>
-  <mat-step label='Choose Tee-Type' >
-    <button mat-button 
-            color='primary'
-            (click)='chooseTeeType()' >CHOOSE TEE-TYPE</button>
+  <mat-step label='Choose Tee-Type' [stepControl]='selectTeeTypeForm' >
+    <form [formGroup]='selectTeeTypeForm'>
+      <button mat-button 
+              color='primary'
+              (click)='chooseTeeType()' >CHOOSE TEE-TYPE</button>
+    </form>
   </mat-step>
-  <mat-step label='Create Card'>
+  <mat-step label='Create Card' >
     <button mat-button
             color='primary'
             (click)='createCard()' >CREATE CARD</button>

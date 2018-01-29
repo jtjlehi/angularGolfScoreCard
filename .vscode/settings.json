@@ -4,6 +4,7 @@
         "polyfills",
         "to",
         "truthy",
-        "ts"
+        "ts",
+        "zipcode"
     ]
 }

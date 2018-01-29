@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 // interfaces
 import { GolfCourseService } from '../golf-course-service/golf-course.service';
 import { GolfCourse } from '../golf-course-service/golf-course.interface';
@@ -13,7 +14,11 @@ import { TeeBox } from '../golf-course-service/tee-box.interface';
   styleUrls: ['./course-loader.component.scss']
 })
 export class CourseLoaderComponent implements OnInit {
-  title = 'Golf';
+  // forms
+  findCoursesForm: FormGroup;
+  chooseCourseForm: FormGroup;
+  selectTeeTypeForm: FormGroup;
+
   golfCourses: GolfCourses;
   golfCourseArray: GolfCourse[];
   course: GolfCourse;
@@ -22,12 +27,23 @@ export class CourseLoaderComponent implements OnInit {
   holes: Holes[];
   teeHoles: TeeBox[];
 
-  constructor(private golfCourseService: GolfCourseService) { }
+  constructor(
+    private golfCourseService: GolfCourseService,
+    private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
+    this.findCoursesForm = this.formBuilder.group({
+      zipcode: new FormControl
+    });
+    this.chooseCourseForm = this.formBuilder.group({
+
+    });
+    this.selectTeeTypeForm = this.formBuilder.group({
+
+    });
   }
 
-  findCourses() {
+  searchCourses() {
     this.golfCourseService.getGolfCourses().subscribe(courses => {
       this.golfCourses = courses;
       this.golfCourseArray = courses.courses;

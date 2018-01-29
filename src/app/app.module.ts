@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -27,7 +28,8 @@ import { CourseLoaderComponent } from './course-loader/course-loader.component';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [
     GolfCourseService
