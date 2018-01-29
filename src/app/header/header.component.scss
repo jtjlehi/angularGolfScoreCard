@@ -10,4 +10,9 @@ header {
     div {
         height: 100%;
     }
+    div.rightNav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

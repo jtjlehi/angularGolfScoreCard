@@ -1,3 +1,6 @@
-mat-button-icon {
+button.mat-icon-button {
     font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
