@@ -13,7 +13,11 @@ export class GolfCourseService {
 
   constructor(private httpClient:  HttpClient) { }
 
-  getGolfCourses(latitude: number, longitude: number, radius: number): Observable<GolfCourses> {
+  getGolfCourses( location?: {
+    latitude: number,
+    longitude: number,
+    radius: number
+  }): Observable<GolfCourses> {
     return this.httpClient.post<GolfCourses>(this.url, {
       latitude: 40.396419,
       longitude: -111.9328359,
@@ -21,8 +25,8 @@ export class GolfCourseService {
     });
   }
 
-  getGolfCourse(id: number): Observable<GolfCourse> {
-    return this.httpClient.get<GolfCourse>(`${this.url}/${id}`);
+  getGolfCourse(id: number): Observable<{course: GolfCourse}> {
+    return this.httpClient.get<{course: GolfCourse}>(`${this.url}/${id}`);
   }
 
 }

@@ -20,7 +20,16 @@ export class AppComponent {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
+    this.golfCourseService.getGolfCourses().subscribe(courses => {
+      this.golfCourses = courses;
+      this.golfCourseArray = courses.courses;
+    });
+  }
 
+  pullCourse() {
+    this.golfCourseService.getGolfCourse(this.golfCourseArray[0].id).subscribe(course => {
+      this.course = course.course;
+    });
   }
 
 }
