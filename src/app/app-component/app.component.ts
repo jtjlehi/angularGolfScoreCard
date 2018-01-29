@@ -11,25 +11,10 @@ import { GolfCourses } from '../golf-course-service/golf-courses.interface';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Golf';
-  golfCourses: GolfCourses;
-  golfCourseArray: GolfCourse[];
-  course: GolfCourse;
 
-  constructor(private golfCourseService: GolfCourseService) { }
+  constructor() { }
 
   // tslint:disable-next-line:use-life-cycle-interface
-  ngOnInit() {
-    this.golfCourseService.getGolfCourses().subscribe(courses => {
-      this.golfCourses = courses;
-      this.golfCourseArray = courses.courses;
-    });
-  }
-
-  pullCourse() {
-    this.golfCourseService.getGolfCourse(this.golfCourseArray[0].id).subscribe(course => {
-      this.course = course.course;
-    });
-  }
+  ngOnInit() { }
 
 }

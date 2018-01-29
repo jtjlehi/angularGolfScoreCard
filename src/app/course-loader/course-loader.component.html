@@ -1,11 +1,24 @@
 <mat-horizontal-stepper linear>
   <mat-step label='Find Course' >
-    <button mat-button matStepperNext color='primary' >FIND COURSES</button>
+    <button mat-button
+            matStepperNext
+            color='primary'
+            (click)='findCourses()' >FIND COURSES</button>
   </mat-step>
   <mat-step label='Choose Course' >
-    <button mat-button matStepperNext color='primary' >CHOOSE COURSE</button>
+    <button mat-button
+            matStepperNext
+            color='primary'
+            (click)='selectCourse()' >CHOOSE COURSE</button>
   </mat-step>
-  <mat-step label='Choose Teetype' >
-    <button mat-button color='primary' >CREATE COURSE</button>
+  <mat-step label='Choose Tee-Type' >
+    <button mat-button 
+            color='primary'
+            (click)='chooseTeeType()' >CHOOSE TEE-TYPE</button>
+  </mat-step>
+  <mat-step label='Create Card'>
+    <button mat-button
+            color='primary'
+            (click)='createCard()' >CREATE CARD</button>
   </mat-step>
 </mat-horizontal-stepper>
