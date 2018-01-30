@@ -1,0 +1,16 @@
+<form [formGroup]='findCourseForm' >
+  <mat-form-field>
+    <input formControlName='zipcode'
+          name='zipcode'
+          type='number'
+          placeholder='Zipcode'
+          matInput
+          [errorStateMatcher]='matcher' >
+    <mat-error *ngIf='findCourseForm.controls.zipcode.hasError("range")' >
+      5 digit zipcodes only
+    </mat-error>
+    <mat-error *ngIf='findCourseForm.controls.zipcode.hasError("required")'>
+      Zipcode is required
+    </mat-error>
+  </mat-form-field>
+</form>

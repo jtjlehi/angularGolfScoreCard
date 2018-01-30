@@ -1,14 +1,10 @@
 <mat-horizontal-stepper linear>
   <mat-step label='Find Course' [stepControl]='findCoursesForm' >
-    <form [formGroup]='findCourseForm' >
-      <mat-form-field>
-        <input matInput type='number' [formControl]='zipcode' >
-      </mat-form-field>
-      <button mat-button
-              matStepperNext
-              color='primary'
-              (click)='searchCourses()' >FIND COURSES</button>
-    </form>
+    <golf-find-course-form></golf-find-course-form>
+    <button mat-button
+          matStepperNext
+          color='primary'
+          (click)='searchCourses()' >FIND COURSES</button>
   </mat-step>
   <mat-step label='Choose Course' [stepControl]='chooseCourseForm' >
     <form [formGroup]='chooseCourseForm'>

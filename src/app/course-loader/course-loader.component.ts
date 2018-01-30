@@ -15,7 +15,6 @@ import { TeeBox } from '../golf-course-service/tee-box.interface';
 })
 export class CourseLoaderComponent implements OnInit {
   // forms
-  findCoursesForm: FormGroup;
   chooseCourseForm: FormGroup;
   selectTeeTypeForm: FormGroup;
 
@@ -32,9 +31,6 @@ export class CourseLoaderComponent implements OnInit {
     private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
-    this.findCoursesForm = this.formBuilder.group({
-      zipcode: new FormControl
-    });
     this.chooseCourseForm = this.formBuilder.group({
 
     });
