@@ -13,7 +13,6 @@ import { MaterialModule } from './material/material.module';
 import { RightNavComponent } from './right-nav/right-nav.component';
 import { LeftNavComponent } from './left-nav/left-nav.component';
 import { CourseLoaderComponent } from './course-loader/course-loader.component';
-import { FindCourseFormComponent } from './find-course-form/find-course-form.component';
 
 
 @NgModule({
@@ -23,7 +22,6 @@ import { FindCourseFormComponent } from './find-course-form/find-course-form.com
     RightNavComponent,
     LeftNavComponent,
     CourseLoaderComponent,
-    FindCourseFormComponent,
   ],
   imports: [
     BrowserModule,
