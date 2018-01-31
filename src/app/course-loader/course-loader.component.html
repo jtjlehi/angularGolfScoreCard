@@ -1,10 +1,26 @@
 <mat-horizontal-stepper linear>
-  <mat-step label='Find Course' [stepControl]='findCoursesForm' >
-    <golf-find-course-form></golf-find-course-form>
-    <button mat-button
+  <mat-step label='Find Course' [stepControl]='findCourseForm' >
+    <form [formGroup]='findCourseForm' >
+      <mat-form-field>
+        <input formControlName='zipcode'
+              name='zipcode'
+              type='number'
+              placeholder='Zipcode'
+              matInput
+              [errorStateMatcher]='matcher'
+              required >
+        <mat-error *ngIf='findCourseForm.controls.zipcode.hasError("range")' >
+          5 digit zipcodes only
+        </mat-error>
+        <mat-error *ngIf='findCourseForm.controls.zipcode.hasError("required")'>
+          Zipcode is required
+        </mat-error>
+      </mat-form-field>
+      <button mat-button
           matStepperNext
           color='primary'
           (click)='searchCourses()' >FIND COURSES</button>
+    </form>
   </mat-step>
   <mat-step label='Choose Course' [stepControl]='chooseCourseForm' >
     <form [formGroup]='chooseCourseForm'>

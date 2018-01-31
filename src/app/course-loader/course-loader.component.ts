@@ -7,6 +7,8 @@ import { GolfCourses } from '../golf-course-service/golf-courses.interface';
 import { TeeType } from '../golf-course-service/tee-types.interface';
 import { Holes } from '../golf-course-service/holes.interface';
 import { TeeBox } from '../golf-course-service/tee-box.interface';
+import { MyErrorStateMatcher } from '../services/mat-matcher.validation';
+import { NumberInputValidator } from '../services/number-input.validatation';
 
 @Component({
   selector: 'golf-course-loader',
@@ -18,6 +20,10 @@ export class CourseLoaderComponent implements OnInit {
   chooseCourseForm: FormGroup;
   selectTeeTypeForm: FormGroup;
 
+  // findCourseForm
+  findCourseForm: FormGroup;
+  zipcode: FormControl;
+
   golfCourses: GolfCourses;
   golfCourseArray: GolfCourse[];
   course: GolfCourse;
@@ -26,16 +32,28 @@ export class CourseLoaderComponent implements OnInit {
   holes: Holes[];
   teeHoles: TeeBox[];
 
+  matcher = new MyErrorStateMatcher();
+
   constructor(
     private golfCourseService: GolfCourseService,
     private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
+    this.createFindCourseForm();
     this.chooseCourseForm = this.formBuilder.group({
 
     });
     this.selectTeeTypeForm = this.formBuilder.group({
 
+    });
+  }
+
+  createFindCourseForm() {
+    this.findCourseForm = this.formBuilder.group({
+      zipcode: new FormControl('', [
+        Validators.required,
+        NumberInputValidator.checkLimit(10000, 99999)
+      ])
     });
   }
 
