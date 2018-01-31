@@ -2,20 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,
   FormGroup,
   FormControl,
-  Validators,
-  ValidatorFn,
-  AbstractControl,
-  FormGroupDirective,
-  NgForm } from '@angular/forms';
+  Validators} from '@angular/forms';
 import { NumberInputValidator } from '../services/number-input.validatation';
-import { ErrorStateMatcher } from '@angular/material';
+import { MyErrorStateMatcher } from '../services/mat-matcher.validation';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
 
 @Component({
   selector: 'golf-find-course-form',
