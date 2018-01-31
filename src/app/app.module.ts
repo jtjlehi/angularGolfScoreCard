@@ -13,6 +13,7 @@ import { MaterialModule } from './material/material.module';
 import { RightNavComponent } from './right-nav/right-nav.component';
 import { LeftNavComponent } from './left-nav/left-nav.component';
 import { CourseLoaderComponent } from './course-loader/course-loader.component';
+import { LatLongService } from './golf-course-service/lat-long.service';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CourseLoaderComponent } from './course-loader/course-loader.component';
     ReactiveFormsModule
   ],
   providers: [
-    GolfCourseService
+    GolfCourseService,
+    LatLongService
   ],
   bootstrap: [AppComponent]
 })

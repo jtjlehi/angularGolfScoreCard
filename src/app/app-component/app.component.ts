@@ -12,9 +12,11 @@ import { GolfCourses } from '../golf-course-service/golf-courses.interface';
 })
 export class AppComponent {
 
+  latLongObject: object;
   constructor() { }
 
   // tslint:disable-next-line:use-life-cycle-interface
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
 }

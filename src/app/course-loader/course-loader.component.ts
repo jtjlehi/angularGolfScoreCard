@@ -9,6 +9,7 @@ import { Holes } from '../golf-course-service/holes.interface';
 import { TeeBox } from '../golf-course-service/tee-box.interface';
 import { MyErrorStateMatcher } from '../services/mat-matcher.validation';
 import { NumberInputValidator } from '../services/number-input.validatation';
+import { LatLongService } from '../golf-course-service/lat-long.service';
 
 @Component({
   selector: 'golf-course-loader',
@@ -23,6 +24,7 @@ export class CourseLoaderComponent implements OnInit {
   // findCourseForm
   findCourseForm: FormGroup;
   zipcode: FormControl;
+  latLongObj: {lat: number; lng: number};
 
   golfCourses: GolfCourses;
   golfCourseArray: GolfCourse[];
@@ -36,10 +38,12 @@ export class CourseLoaderComponent implements OnInit {
 
   constructor(
     private golfCourseService: GolfCourseService,
+    private latLongService: LatLongService,
     private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
     this.createFindCourseForm();
+    this.findLatAndLong(84045);
     this.chooseCourseForm = this.formBuilder.group({
 
     });
@@ -54,6 +58,13 @@ export class CourseLoaderComponent implements OnInit {
         Validators.required,
         NumberInputValidator.checkLimit(10000, 99999)
       ])
+    });
+  }
+
+  findLatAndLong(zipcode: number) {
+    this.latLongService.getLatLong(zipcode).subscribe(latObj => {
+      this.latLongObj = latObj.results[0].geometry.location;
+      console.log(this.latLongObj);
     });
   }
 
