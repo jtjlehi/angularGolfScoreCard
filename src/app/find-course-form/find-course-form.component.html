@@ -5,7 +5,8 @@
           type='number'
           placeholder='Zipcode'
           matInput
-          [errorStateMatcher]='matcher' >
+          [errorStateMatcher]='matcher'
+          required >
     <mat-error *ngIf='findCourseForm.controls.zipcode.hasError("range")' >
       5 digit zipcodes only
     </mat-error>
