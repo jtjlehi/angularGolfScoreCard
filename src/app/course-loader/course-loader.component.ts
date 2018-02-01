@@ -10,6 +10,7 @@ import { TeeBox } from '../golf-course-service/tee-box.interface';
 import { MyErrorStateMatcher } from '../services/mat-matcher.validation';
 import { NumberInputValidator } from '../services/number-input.validatation';
 import { LatLongService } from '../golf-course-service/lat-long.service';
+import { MatStepper } from '@angular/material';
 
 @Component({
   selector: 'golf-course-loader',
@@ -24,7 +25,7 @@ export class CourseLoaderComponent implements OnInit {
   // findCourseForm
   findCourseForm: FormGroup;
   zipcode: FormControl;
-  latLongObj: {lat: number; lng: number};
+  latLongObj: {latitude: number; longitude: number, radius: number};
 
   golfCourses: GolfCourses;
   golfCourseArray: GolfCourse[];
@@ -39,11 +40,10 @@ export class CourseLoaderComponent implements OnInit {
   constructor(
     private golfCourseService: GolfCourseService,
     private latLongService: LatLongService,
-    private formBuilder: FormBuilder ) { }
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.createFindCourseForm();
-    this.findLatAndLong(84045);
     this.chooseCourseForm = this.formBuilder.group({
 
     });
@@ -51,6 +51,12 @@ export class CourseLoaderComponent implements OnInit {
 
     });
   }
+
+  matGoForward(stepper: MatStepper) {
+    stepper.next();
+  }
+
+  // form creation
 
   createFindCourseForm() {
     this.findCourseForm = this.formBuilder.group({
@@ -61,19 +67,29 @@ export class CourseLoaderComponent implements OnInit {
     });
   }
 
-  findLatAndLong(zipcode: number) {
+  // find course step
+
+  findLatAndLong(zipcode: number, stepper: MatStepper) {
     this.latLongService.getLatLong(zipcode).subscribe(latObj => {
-      this.latLongObj = latObj.results[0].geometry.location;
-      console.log(this.latLongObj);
+      this.latLongObj = {
+        latitude: latObj.results[0].geometry.location.lat,
+        longitude: latObj.results[0].geometry.location.lng,
+        radius: 10
+      };
+      this.searchCourses(this.latLongObj, stepper);
     });
   }
 
-  searchCourses() {
-    this.golfCourseService.getGolfCourses().subscribe(courses => {
+  searchCourses(latLongObj: {latitude: number, longitude: number, radius: number}, stepper: MatStepper) {
+    this.golfCourseService.getGolfCourses(latLongObj).subscribe(courses => {
       this.golfCourses = courses;
       this.golfCourseArray = courses.courses;
+      console.log('courses', this.golfCourseArray);
+      this.matGoForward(stepper);
     });
   }
+
+  // select course step
 
   selectCourse() {
     this.golfCourseService.getGolfCourse(this.golfCourseArray[0].id).subscribe(course => {

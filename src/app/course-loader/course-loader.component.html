@@ -1,4 +1,4 @@
-<mat-horizontal-stepper linear>
+<mat-horizontal-stepper linear #stepper>
   <mat-step label='Find Course' [stepControl]='findCourseForm' >
     <form [formGroup]='findCourseForm' >
       <mat-form-field>
@@ -7,6 +7,7 @@
               type='number'
               placeholder='Zipcode'
               matInput
+              #zipcode
               [errorStateMatcher]='matcher'
               required >
         <mat-error *ngIf='findCourseForm.controls.zipcode.hasError("range")' >
@@ -17,9 +18,8 @@
         </mat-error>
       </mat-form-field>
       <button mat-button
-          matStepperNext
           color='primary'
-          (click)='searchCourses()' >FIND COURSES</button>
+          (click)='findLatAndLong(zipcode.value, stepper)' >FIND COURSES</button>
     </form>
   </mat-step>
   <mat-step label='Choose Course' [stepControl]='chooseCourseForm' >

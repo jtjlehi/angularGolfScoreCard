@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ChangeDetectorRef } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -34,7 +34,7 @@ import { LatLongService } from './golf-course-service/lat-long.service';
   ],
   providers: [
     GolfCourseService,
-    LatLongService
+    LatLongService,
   ],
   bootstrap: [AppComponent]
 })
