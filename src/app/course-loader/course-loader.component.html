@@ -11,10 +11,10 @@
               [errorStateMatcher]='matcher'
               required >
         <mat-error *ngIf='findCourseForm.controls.zipcode.hasError("range")' >
-          5 digit zipcodes only
+          5 Digit Zipcode Only
         </mat-error>
         <mat-error *ngIf='findCourseForm.controls.zipcode.hasError("required")'>
-          Zipcode is required
+          Zipcode is Required
         </mat-error>
       </mat-form-field>
       <button mat-button
@@ -24,10 +24,24 @@
   </mat-step>
   <mat-step label='Choose Course' [stepControl]='chooseCourseForm' >
     <form [formGroup]='chooseCourseForm'>
+      <mat-form-field>
+        <mat-select placeholder='Golf Course'
+                  formControlName='course'
+                  #course
+                  [errorStateMatcher]='matcher'
+                  required >
+          <mat-option *ngFor='let course of golfCourseArray' [value]='course' >
+            {{ course.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf='chooseCourseForm.controls.course.hasError("required")'>
+          Golf Course is Required
+        </mat-error>
+      </mat-form-field>
       <button mat-button
               matStepperNext
               color='primary'
-              (click)='selectCourse()' >CHOOSE COURSE</button>
+              (click)='selectCourse(course.value)' >CHOOSE COURSE</button>
     </form>
   </mat-step>
   <mat-step label='Choose Tee-Type' [stepControl]='selectTeeTypeForm' >

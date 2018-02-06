@@ -44,9 +44,7 @@ export class CourseLoaderComponent implements OnInit {
 
   ngOnInit() {
     this.createFindCourseForm();
-    this.chooseCourseForm = this.formBuilder.group({
-
-    });
+    this.createChooseCourseForm();
     this.selectTeeTypeForm = this.formBuilder.group({
 
     });
@@ -63,6 +61,14 @@ export class CourseLoaderComponent implements OnInit {
       zipcode: new FormControl('', [
         Validators.required,
         NumberInputValidator.checkLimit(10000, 99999)
+      ])
+    });
+  }
+
+  createChooseCourseForm() {
+    this.chooseCourseForm = this.formBuilder.group({
+      course: new FormControl('', [
+        Validators.required
       ])
     });
   }
@@ -84,25 +90,30 @@ export class CourseLoaderComponent implements OnInit {
     this.golfCourseService.getGolfCourses(latLongObj).subscribe(courses => {
       this.golfCourses = courses;
       this.golfCourseArray = courses.courses;
-      console.log('courses', this.golfCourseArray);
+      console.log('this.golfCourseArray: ', this.golfCourseArray);
       this.matGoForward(stepper);
     });
   }
 
   // select course step
 
-  selectCourse() {
-    this.golfCourseService.getGolfCourse(this.golfCourseArray[0].id).subscribe(course => {
-      this.course = course.course;
-      this.teeTypes = course.course.tee_types;
-      this.holes = course.course.holes;
+  selectCourse(selectedCourse) {
+    console.log(selectedCourse);
+    this.golfCourseService.getGolfCourse(selectedCourse.id).subscribe(returnCourse => {
+      this.course = returnCourse.course;
+      this.teeTypes = returnCourse.course.tee_types;
+      this.holes = returnCourse.course.holes;
       console.log(this.holes);
     });
   }
 
+  // choose tee type step
+
   chooseTeeType() {
     throw new Error('chooseTeeType not implemented yet');
   }
+
+  // create card step
 
   createCard() {
     throw new Error('createCard not implemented yet');
