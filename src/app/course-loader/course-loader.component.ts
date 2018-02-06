@@ -107,7 +107,8 @@ export class CourseLoaderComponent implements OnInit {
     });
   }
 
-  // choose tee type step
+  // choose tee-type step
+  // todo implement choose tee-type step
 
   chooseTeeType() {
     throw new Error('chooseTeeType not implemented yet');
