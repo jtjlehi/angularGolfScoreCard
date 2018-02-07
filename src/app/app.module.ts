@@ -17,6 +17,8 @@ import { LatLongService } from './golf-course-service/lat-long.service';
 import { ScoreCardComponent } from './score-card/score-card.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FirebaseService } from './services/firebase/firebase.service';
+import { LoginComponent } from './login/login.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { FirebaseService } from './services/firebase/firebase.service';
     CourseLoaderComponent,
     ScoreCardComponent,
     PageNotFoundComponent,
+    LoginComponent,
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,
