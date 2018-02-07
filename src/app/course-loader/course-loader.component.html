@@ -1,3 +1,4 @@
+<mat-card>
 <mat-horizontal-stepper linear #stepper>
   <mat-step label='Find Course' [stepControl]='findCourseForm' >
     <form [formGroup]='findCourseForm' >
@@ -44,9 +45,5 @@
               (click)='selectCourse(course.value)' >CHOOSE COURSE</button>
     </form>
   </mat-step>
-  <mat-step label='Create Card' >
-    <button mat-button
-            color='primary'
-            (click)='createCard()' >CREATE CARD</button>
-  </mat-step>
 </mat-horizontal-stepper>
+</mat-card>

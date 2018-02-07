@@ -1,0 +1,19 @@
+mat-card {
+    height: 50%;
+    width: 100%;
+    margin: 0 auto;
+    @media (min-width: 400px) {
+        width: 80%;
+    }
+    mat-horizontal-stepper {
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        mat-step, form {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
