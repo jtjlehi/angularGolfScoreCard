@@ -16,6 +16,7 @@ import { CourseLoaderComponent } from './course-loader/course-loader.component';
 import { LatLongService } from './golf-course-service/lat-long.service';
 import { ScoreCardComponent } from './score-card/score-card.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FirebaseService } from './services/firebase/firebase.service';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   providers: [
     GolfCourseService,
     LatLongService,
+    FirebaseService
   ],
   bootstrap: [AppComponent]
 })
