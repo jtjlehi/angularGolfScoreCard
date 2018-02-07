@@ -45,9 +45,6 @@ export class CourseLoaderComponent implements OnInit {
   ngOnInit() {
     this.createFindCourseForm();
     this.createChooseCourseForm();
-    this.selectTeeTypeForm = this.formBuilder.group({
-
-    });
   }
 
   matGoForward(stepper: MatStepper) {
@@ -105,13 +102,6 @@ export class CourseLoaderComponent implements OnInit {
       this.holes = returnCourse.course.holes;
       console.log(this.holes);
     });
-  }
-
-  // choose tee-type step
-  // todo implement choose tee-type step
-
-  chooseTeeType() {
-    throw new Error('chooseTeeType not implemented yet');
   }
 
   // create card step

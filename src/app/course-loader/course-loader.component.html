@@ -44,14 +44,6 @@
               (click)='selectCourse(course.value)' >CHOOSE COURSE</button>
     </form>
   </mat-step>
-  <!-- todo: implement Choose tee-type step -->
-  <mat-step label='Choose Tee-Type' [stepControl]='selectTeeTypeForm' >
-    <form [formGroup]='selectTeeTypeForm'>
-      <button mat-button 
-              color='primary'
-              (click)='chooseTeeType()' >CHOOSE TEE-TYPE</button>
-    </form>
-  </mat-step>
   <mat-step label='Create Card' >
     <button mat-button
             color='primary'
