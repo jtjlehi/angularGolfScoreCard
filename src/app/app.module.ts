@@ -15,6 +15,7 @@ import { LeftNavComponent } from './left-nav/left-nav.component';
 import { CourseLoaderComponent } from './course-loader/course-loader.component';
 import { LatLongService } from './golf-course-service/lat-long.service';
 import { ScoreCardComponent } from './score-card/score-card.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ScoreCardComponent } from './score-card/score-card.component';
     LeftNavComponent,
     CourseLoaderComponent,
     ScoreCardComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

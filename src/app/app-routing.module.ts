@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CourseLoaderComponent } from './course-loader/course-loader.component';
 import { ScoreCardComponent } from './score-card/score-card.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
     redirectTo: '/new-card',
     pathMatch: 'full'
   },
-  // { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
