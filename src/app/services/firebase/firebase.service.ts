@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http/src/client';
+import { Injectable, } from '@angular/core';
 import { Game } from './game.interface';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class FirebaseService {
