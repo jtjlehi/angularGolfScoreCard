@@ -2,7 +2,12 @@
   <mat-icon>more_vert</mat-icon>
 </button>
 <mat-menu #appMenu='matMenu'>
-  <button mat-menu-item *ngFor='let item of menuItems' (click)='openDialog(item.component)' >{{item.text}}</button>
+  <button mat-menu-item 
+    *ngFor='let item of menuItems' 
+    [routerLink]=item.link
+    routerLinkActive='Active' >
+    {{item.text}}
+  </button>
   <button mat-menu-item>Feedback</button>
   <button mat-menu-item>Help</button>
 </mat-menu>

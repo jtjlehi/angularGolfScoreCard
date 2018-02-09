@@ -11,24 +11,16 @@ import { NewUserComponent } from '../new-user/new-user.component';
 })
 export class RightNavComponent implements OnInit {
 
-  menuItems: {text: string, component: any}[] = [
+  menuItems: {text: string, link: string}[] = [
     {
-      text: 'Existing User',
-      component: LoginComponent
+      text: 'Login',
+      link: '/login'
     },
-    {
-      text: 'New User',
-      component: NewUserComponent
-    }
   ];
 
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
-  }
-
-  openDialog(component) {
-    let dialogRef = this.dialog.open(component);
   }
 
 }

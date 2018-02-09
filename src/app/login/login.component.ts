@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+
+import { NewUserComponent } from '../new-user/new-user.component';
 
 @Component({
   selector: 'golf-login',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  password: string;
+
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  openNewUserDialog() {
+    const dialogRef = this.dialog.open(NewUserComponent);
+  }
+
+  login() {
+    throw new Error('login() not implemented yet');
   }
 
 }
