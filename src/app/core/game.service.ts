@@ -35,4 +35,8 @@ export class GameService {
     return game;
   }
 
+  getGameData(gameId) {
+    throw new Error('getGameData() not implemented');
+  }
+
 }
