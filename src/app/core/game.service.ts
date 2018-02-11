@@ -23,14 +23,16 @@ export class GameService {
     });
   }
 
-  createNewGame(gameObj: GolfCourse) {
+  createNewGame(course: GolfCourse) {
     const gameId = this.afs.createId();
-    this.gamesCollection.add({
+    const game = {
       gameId: gameId,
-      numOfHoles: gameObj.hole_count,
+      numOfHoles: course.hole_count,
       players: [],
-      holes: gameObj.holes
-    });
+      holes: course.holes
+    };
+    this.gamesCollection.add(game);
+    return game;
   }
 
 }

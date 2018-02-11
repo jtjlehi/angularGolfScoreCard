@@ -13,7 +13,7 @@ const routes: Routes = [
     component: CourseLoaderComponent
   },
   {
-    path: 'score-card/:id',
+    path: 'score-card/:game',
     component: ScoreCardComponent
   },
   {

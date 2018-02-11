@@ -12,6 +12,7 @@ import { NumberInputValidator } from '../services/number-input.validatation';
 import { LatLongService } from '../golf-course-service/lat-long.service';
 import { MatStepper } from '@angular/material';
 import { GameService } from '../core/game.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'golf-course-loader',
@@ -42,7 +43,8 @@ export class CourseLoaderComponent implements OnInit {
     private golfCourseService: GolfCourseService,
     private latLongService: LatLongService,
     private formBuilder: FormBuilder,
-    private gameService: GameService
+    private gameService: GameService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -109,7 +111,8 @@ export class CourseLoaderComponent implements OnInit {
   // create card step
 
   createCard() {
-    this.gameService.createNewGame(this.course);
+    const game = this.gameService.createNewGame(this.course);
+    this.router.navigate([`score-card/${game.gameId}`]);
   }
 
 }
