@@ -4,6 +4,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { GameService } from '../core/game.service';
+import { Observable } from 'rxjs/Observable';
+import { Game } from '../services/firebase/game.interface';
 
 
 @Component({
@@ -14,6 +16,8 @@ import { GameService } from '../core/game.service';
 export class ScoreCardComponent implements OnInit {
 
   gameId: string;
+  gameObservable: Observable<Game>;
+  game: Game;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +28,11 @@ export class ScoreCardComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.gameId = params.game;
-      this.gameService.getGameData(this.gameId);
+      this.gameObservable = this.gameService.getGameData(this.gameId);
+      this.gameObservable.subscribe((game) => {
+        this.game = game;
+        console.log(game);
+      });
     });
   }
 

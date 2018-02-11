@@ -31,12 +31,12 @@ export class GameService {
       players: [],
       holes: course.holes
     };
-    this.gamesCollection.add(game);
+    this.afs.doc<Game>(`games/${gameId}`).set(game);
     return game;
   }
 
-  getGameData(gameId) {
-    throw new Error('getGameData() not implemented');
+  getGameData(gameId): Observable<Game> {
+    return this.afs.doc<Game>(`games/${gameId}`).valueChanges();
   }
 
 }
