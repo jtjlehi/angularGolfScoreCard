@@ -1,8 +1,36 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+
+import { AngularFirestore, DocumentChangeAction, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Game } from '../services/firebase/game.interface';
+import { GolfCourse } from '../golf-course-service/golf-course.interface';
+
 @Injectable()
 export class GameService {
 
-  constructor() { }
+  gamesCollection: AngularFirestoreCollection<Game>;
+  games: Game[];
+  gameSnapShot: DocumentChangeAction[];
+
+  constructor(private afs: AngularFirestore) {
+    this.gamesCollection = this.afs.collection<Game>('games');
+    this.gamesCollection.valueChanges().subscribe(games => {
+      this.games = games;
+    });
+    this.gamesCollection.snapshotChanges().subscribe(snaps => {
+      this.gameSnapShot = snaps;
+    });
+  }
+
+  createNewGame(gameObj: GolfCourse) {
+    const gameId = this.afs.createId();
+    this.gamesCollection.add({
+      gameId: gameId,
+      numOfHoles: gameObj.hole_count,
+      players: [],
+      holes: gameObj.holes
+    });
+  }
 
 }
