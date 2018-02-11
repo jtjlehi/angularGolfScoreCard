@@ -16,7 +16,6 @@ import { Game } from '../services/firebase/game.interface';
 export class ScoreCardComponent implements OnInit {
 
   gameId: string;
-  gameObservable: Observable<Game>;
   game: Game;
 
   constructor(
@@ -28,8 +27,7 @@ export class ScoreCardComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.gameId = params.game;
-      this.gameObservable = this.gameService.getGameData(this.gameId);
-      this.gameObservable.subscribe((game) => {
+      this.gameService.getGameData(this.gameId).subscribe((game) => {
         this.game = game;
         console.log(game);
       });
