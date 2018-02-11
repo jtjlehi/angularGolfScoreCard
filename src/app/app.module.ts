@@ -19,6 +19,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FirebaseService } from './services/firebase/firebase.service';
 import { LoginComponent } from './login/login.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { NewUserComponent } from './new-user/new-user.component';
     NewUserComponent,
   ],
   imports: [
+    CoreModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
