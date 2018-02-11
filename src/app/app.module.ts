@@ -20,6 +20,8 @@ import { FirebaseService } from './services/firebase/firebase.service';
 import { LoginComponent } from './login/login.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { CoreModule } from './core/core.module';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
     GolfCourseService,

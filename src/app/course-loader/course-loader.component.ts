@@ -11,6 +11,7 @@ import { MyErrorStateMatcher } from '../services/mat-matcher.validation';
 import { NumberInputValidator } from '../services/number-input.validatation';
 import { LatLongService } from '../golf-course-service/lat-long.service';
 import { MatStepper } from '@angular/material';
+import { GameService } from '../core/game.service';
 
 @Component({
   selector: 'golf-course-loader',
@@ -40,7 +41,9 @@ export class CourseLoaderComponent implements OnInit {
   constructor(
     private golfCourseService: GolfCourseService,
     private latLongService: LatLongService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private gameService: GameService
+  ) { }
 
   ngOnInit() {
     this.createFindCourseForm();
@@ -95,19 +98,18 @@ export class CourseLoaderComponent implements OnInit {
   // select course step
 
   selectCourse(selectedCourse) {
-    console.log(selectedCourse);
     this.golfCourseService.getGolfCourse(selectedCourse.id).subscribe(returnCourse => {
       this.course = returnCourse.course;
       this.teeTypes = returnCourse.course.tee_types;
       this.holes = returnCourse.course.holes;
-      console.log(this.holes);
+      this.createCard();
     });
   }
 
   // create card step
 
   createCard() {
-    throw new Error('createCard not implemented yet');
+    this.gameService.createNewGame(this.course);
   }
 
 }
