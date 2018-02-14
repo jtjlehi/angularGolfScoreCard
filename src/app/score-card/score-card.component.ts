@@ -17,6 +17,7 @@ export class ScoreCardComponent implements OnInit {
 
   gameId: string;
   game: Game;
+  setUp: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,10 +29,18 @@ export class ScoreCardComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.gameId = params.game;
       this.gameService.getGameData(this.gameId).subscribe((game) => {
-        this.game = game;
-        console.log(game);
+        if (this.setUp) {
+          console.log('game', game);
+          this.game = game;
+          this.setUp = false;
+        }
+        console.log('game.holes[0].tee_boxes', game.holes[0].tee_boxes);
       });
     });
+  }
+
+  getCellWidth(factor?: number) {
+    return `${100 / (this.game.numOfHoles + 1)}%`;
   }
 
 }
