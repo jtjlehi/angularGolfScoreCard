@@ -38,6 +38,9 @@ import { AddPlayerDialogComponent } from './add-player-dialog/add-player-dialog.
     NewUserComponent,
     AddPlayerDialogComponent,
   ],
+  entryComponents: [
+    AddPlayerDialogComponent
+  ],
   imports: [
     CoreModule,
     BrowserModule,

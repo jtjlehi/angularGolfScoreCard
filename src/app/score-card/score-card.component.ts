@@ -6,6 +6,9 @@ import 'rxjs/add/operator/switchMap';
 import { GameService } from '../core/game.service';
 import { Observable } from 'rxjs/Observable';
 import { Game } from '../services/firebase/game.interface';
+import { MatDialog } from '@angular/material';
+
+import { AddPlayerDialogComponent } from '../add-player-dialog/add-player-dialog.component';
 
 
 @Component({
@@ -22,7 +25,8 @@ export class ScoreCardComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private gameService: GameService
+    private gameService: GameService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -45,6 +49,7 @@ export class ScoreCardComponent implements OnInit {
 
   addPlayer() {
     console.log('player added');
+    const dialogRef = this.dialog.open(AddPlayerDialogComponent);
   }
 
 }
