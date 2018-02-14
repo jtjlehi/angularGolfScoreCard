@@ -43,4 +43,8 @@ export class ScoreCardComponent implements OnInit {
     return `${100 / (this.game.numOfHoles + 1)}%`;
   }
 
+  addPlayer() {
+    console.log('player added');
+  }
+
 }
