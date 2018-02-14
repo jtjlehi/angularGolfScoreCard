@@ -1,3 +1,25 @@
-<p>
-  add-player-dialog works!
-</p>
+<h2 mat-dialog-title>New Player</h2>
+<mat-dialog-content>
+  <div>
+    <mat-form-field>
+      <input required
+        placeholder="Name"
+        type="text"
+        matInput
+        [(ngModel)]="data.name">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input required
+        placeholder="Handicap"
+        type="number"
+        matInput
+        [(ngModel)]="data.handicap">
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancelClose()" >cancel</button>
+  <button mat-button (click)="confirmClose()" >Confirm</button>
+</mat-dialog-actions>

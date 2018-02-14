@@ -21,6 +21,8 @@ export class ScoreCardComponent implements OnInit {
   gameId: string;
   game: Game;
   setUp: boolean = true;
+  newPlayerName: string;
+  newPlayerHandicap: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,8 +50,20 @@ export class ScoreCardComponent implements OnInit {
   }
 
   addPlayer() {
-    console.log('player added');
-    const dialogRef = this.dialog.open(AddPlayerDialogComponent);
+    this.newPlayerName = '';
+    this.newPlayerHandicap = '0';
+    const dialogRef = this.dialog.open(AddPlayerDialogComponent, {
+      data: {
+        name: this.newPlayerName,
+        handicap: this.newPlayerHandicap
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.newPlayerName = result.name;
+        this.newPlayerHandicap = result.handicap;
+      }
+    });
   }
 
 }

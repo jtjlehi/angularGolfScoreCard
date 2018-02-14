@@ -16,4 +16,11 @@ export class AddPlayerDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  confirmClose() {
+    this.dialogRef.close(this.data);
+  }
+  cancelClose() {
+    this.dialogRef.close(false);
+  }
+
 }
