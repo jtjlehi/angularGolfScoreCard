@@ -22,6 +22,7 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { CoreModule } from './core/core.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
+import { AddPlayerDialogComponent } from './add-player-dialog/add-player-dialog.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { environment } from '../environments/environment';
     PageNotFoundComponent,
     LoginComponent,
     NewUserComponent,
+    AddPlayerDialogComponent,
   ],
   imports: [
     CoreModule,
