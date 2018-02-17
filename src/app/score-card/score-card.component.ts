@@ -9,6 +9,7 @@ import { Game } from '../services/firebase/game.interface';
 import { MatDialog } from '@angular/material';
 
 import { AddPlayerDialogComponent } from '../add-player-dialog/add-player-dialog.component';
+import { Player } from './player.interface';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class ScoreCardComponent implements OnInit {
   setUp: boolean = true;
   newPlayerName: string;
   newPlayerHandicap: string;
+  players: Player[];
 
   constructor(
     private route: ActivatedRoute,
