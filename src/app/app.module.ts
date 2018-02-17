@@ -23,6 +23,7 @@ import { CoreModule } from './core/core.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AddPlayerDialogComponent } from './add-player-dialog/add-player-dialog.component';
+import { PlayerRowComponent } from './player-row/player-row.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AddPlayerDialogComponent } from './add-player-dialog/add-player-dialog.
     LoginComponent,
     NewUserComponent,
     AddPlayerDialogComponent,
+    PlayerRowComponent,
   ],
   entryComponents: [
     AddPlayerDialogComponent
