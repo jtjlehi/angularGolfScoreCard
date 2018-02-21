@@ -5,11 +5,5 @@ import { Holes } from "../../golf-course-service/holes.interface";
 export interface Game {
     gameId: string;
     numOfHoles: number;
-    players: {
-        id: string;
-        holes: number[];
-        totalScore: number;
-        user: User;
-    }[];
     holes: Holes[];
 }
