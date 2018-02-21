@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material';
 
 import { AddPlayerDialogComponent } from '../add-player-dialog/add-player-dialog.component';
 import { Player } from './player.interface';
+import { Player as PlayerClass } from './player.class';
 
 
 @Component({
@@ -64,6 +65,7 @@ export class ScoreCardComponent implements OnInit {
       if (result) {
         this.newPlayerName = result.name;
         this.newPlayerHandicap = result.handicap;
+        const newPlayer: Player = new PlayerClass(result.name, result.handicap);
       }
     });
   }
