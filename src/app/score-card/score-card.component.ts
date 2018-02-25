@@ -65,7 +65,8 @@ export class ScoreCardComponent implements OnInit {
       if (result) {
         this.newPlayerName = result.name;
         this.newPlayerHandicap = result.handicap;
-        const newPlayer: Player = new PlayerClass(result.name, result.handicap);
+        const newPlayer: PlayerClass = new PlayerClass(result.name, result.handicap);
+        newPlayer.addHoles(this.game.holes.length);
       }
     });
   }
