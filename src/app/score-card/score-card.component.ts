@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material';
 import { AddPlayerDialogComponent } from '../add-player-dialog/add-player-dialog.component';
 import { Player } from './player.interface';
 import { Player as PlayerClass } from './player.class';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 
 @Component({
@@ -25,13 +26,15 @@ export class ScoreCardComponent implements OnInit {
   setUp: boolean = true;
   newPlayerName: string;
   newPlayerHandicap: string;
+  playersCollection: AngularFirestoreCollection<Player>;
   players: Player[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private gameService: GameService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
@@ -43,6 +46,11 @@ export class ScoreCardComponent implements OnInit {
           this.setUp = false;
         }
       });
+      this.playersCollection = this.afs.collection('games').doc(this.gameId).collection<Player>('players');
+      this.playersCollection.valueChanges().subscribe(players => {
+          this.players = players;
+          console.log(this.players);
+      })
     });
   }
 
