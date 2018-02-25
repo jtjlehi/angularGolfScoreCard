@@ -39,11 +39,9 @@ export class ScoreCardComponent implements OnInit {
       this.gameId = params.game;
       this.gameService.getGameData(this.gameId).subscribe((game) => {
         if (this.setUp) {
-          console.log('game', game);
           this.game = game;
           this.setUp = false;
         }
-        console.log('game.holes[0].tee_boxes', game.holes[0].tee_boxes);
       });
     });
   }
