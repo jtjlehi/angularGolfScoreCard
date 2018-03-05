@@ -29,7 +29,7 @@
       <div>total Score</div>
     </div>
   </header>
-  <golf-player-row *ngFor="let player of players" ></golf-player-row>
+  <golf-player-row *ngFor="let player of players" [player]="player" ></golf-player-row>
 </mat-card>
 <button *ngIf="game"
   mat-raised-button
