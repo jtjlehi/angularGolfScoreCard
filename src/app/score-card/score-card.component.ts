@@ -54,7 +54,7 @@ export class ScoreCardComponent implements OnInit {
     });
   }
 
-  getCellWidth(factor?: number) {
+  getCellWidth(factor?: number): string {
     return `${100 / (this.game.numOfHoles + 1)}%`;
   }
 

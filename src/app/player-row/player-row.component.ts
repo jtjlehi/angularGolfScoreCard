@@ -9,6 +9,7 @@ import { Player } from '../score-card/player.interface';
 export class PlayerRowComponent implements OnInit {
 
   @Input() player: Player;
+  @Input() cellWidth: string;
 
   constructor() { }
 
