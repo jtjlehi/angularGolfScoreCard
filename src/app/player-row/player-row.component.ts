@@ -13,21 +13,30 @@ export class PlayerRowComponent implements OnInit {
   @Input() cellWidth: string;
 
   holes: FormArray;
-  score: number = 0;
+  holeArray: number[];
+  totalScore: number = 0;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.createHolesArray();
-    this.holes.valueChanges.subscribe((holes) => {
-      console.log('holes form array', holes);
-    });
-    console.log(this.holes);
   }
 
   createHolesArray(): void {
     // TODO: add any validators if needed
     this.holes = this.fb.array(this.player.hole_scores);
+    this.holeArray = this.player.hole_scores;
+    this.holes.controls.forEach((holeControl: FormControl, holeNumber: number) => {
+      holeControl.valueChanges.subscribe((value) => {
+        // test and set values to be added and subtracted
+        const valueAdded = holeControl.value ? holeControl.value : 0;
+        const valueSubtracted = this.holeArray[holeNumber] ? this.holeArray[holeNumber] : 0;
+        // change to total score value
+        this.totalScore = this.totalScore - valueSubtracted + valueAdded;
+        // set this.holeArray so it holds the right value.
+        this.holeArray[holeNumber] = holeControl.value;
+      });
+    });
   }
 
   getCellWidth() {
