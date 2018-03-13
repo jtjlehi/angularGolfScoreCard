@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Player } from '../score-card/player.interface';
 import { FormArray, FormControl, FormBuilder } from '@angular/forms';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'golf-player-row',
@@ -16,7 +17,10 @@ export class PlayerRowComponent implements OnInit {
   holeArray: number[];
   totalScore: number = 0;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private afs: AngularFirestore
+  ) { }
 
   ngOnInit() {
     this.createHolesArray();
