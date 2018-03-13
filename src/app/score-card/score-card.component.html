@@ -33,7 +33,8 @@
   <golf-player-row 
     *ngFor="let player of players"
     [player]="player"
-    [cellWidth]="getCellWidth()" >
+    [cellWidth]="getCellWidth()"
+    [gameId]="gameId" >
   </golf-player-row>
 </mat-card>
 <button *ngIf="game"

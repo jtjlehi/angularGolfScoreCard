@@ -12,6 +12,7 @@ export class PlayerRowComponent implements OnInit {
 
   @Input() player: Player;
   @Input() cellWidth: string;
+  @Input() gameId: string;
 
   holes: FormArray;
   holeArray: number[];
