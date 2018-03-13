@@ -1,29 +1,30 @@
 <mat-card *ngIf="game" >
   <header>
-    <div class="holeCol"
-      [style.width]="getCellWidth() * 1.05" >
+    <div class="holeCol nameHole" >
       <div>Holes</div>
       <div *ngFor="let teeBox of game.holes[0].tee_boxes"
         [style.background-color]="teeBox.tee_hex_color" >
-        {{teeBox.tee_type}}(Yards)
+        {{teeBox.tee_type}}
       </div>
       <div>Par</div>
     </div>
-    <div *ngFor="let hole of game.holes"
-      class="holeCol"
-      [style.width]="getCellWidth()" >
-      <div>
-        {{hole.hole_num}}
-      </div>
-      <div *ngFor="let teeBox of hole.tee_boxes" 
-        [style.background-color]="teeBox.tee_hex_color" >
-        {{teeBox.yards}}
-      </div>
-      <div>
-        {{hole.tee_boxes[0].par}}
+    <div class="holeCont">
+      <div *ngFor="let hole of game.holes"
+        class="holeCol"
+        [style.width]="getCellWidth()" >
+        <div>
+          {{hole.hole_num}}
+        </div>
+        <div *ngFor="let teeBox of hole.tee_boxes" 
+          [style.background-color]="teeBox.tee_hex_color" >
+          {{teeBox.yards}}
+        </div>
+        <div>
+          {{hole.tee_boxes[0].par}}
+        </div>
       </div>
     </div>
-    <div class="holeCol" >
+    <div class="holeCol scoreHole" >
       <div></div>
       <div *ngFor="let teeBox of game.holes[0].tee_boxes" ></div>
       <div>total Score</div>

@@ -1,3 +1,15 @@
-<p>
-  player-row works!
-</p>
+<section>
+  <div class='nameHole rowCell cell' >
+    <!-- add a player name pipe -->
+    {{player.name}}
+  </div>
+  <div class="holeCont">
+    <div *ngFor="let hole of holes.controls"
+      class="cell"
+      [style.width]="getCellWidth()" >
+      <input
+        type="number" >
+    </div>
+  </div>
+  <div class="cell scoreHole" ></div>
+</section>
