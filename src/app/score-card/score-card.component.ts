@@ -71,9 +71,9 @@ export class ScoreCardComponent implements OnInit {
       if (result) {
         this.newPlayerName = result.name;
         this.newPlayerHandicap = result.handicap;
-        const newPlayer: PlayerClass = new PlayerClass(result.name, result.handicap);
+        const newPlayer: PlayerClass = new PlayerClass(result.name, result.handicap, {afs: this.afs, gameId: this.gameId});
         newPlayer.addHoles(this.game.holes.length);
-        this.playersCollection.add(newPlayer.object);
+        newPlayer.addToFirebase();
       }
     });
   }

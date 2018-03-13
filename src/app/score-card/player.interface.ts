@@ -3,4 +3,5 @@ export interface Player {
     handicap: number;
     hole_scores: number[];
     total: number;
+    id: string;
 }
