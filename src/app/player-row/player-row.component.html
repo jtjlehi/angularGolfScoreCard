@@ -4,12 +4,15 @@
     {{player.name}}
   </div>
   <div class="holeCont">
-    <div *ngFor="let hole of holes.controls"
+    <div *ngFor="let hole of holes.controls; let i = index"
       class="cell"
       [style.width]="getCellWidth()" >
       <input
-        type="number" >
+        type="number"
+        [formControl]="hole" >
     </div>
   </div>
-  <div class="cell scoreHole" ></div>
+  <div class="cell scoreHole" >
+    {{score}}
+  </div>
 </section>
