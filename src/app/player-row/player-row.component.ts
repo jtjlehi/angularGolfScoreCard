@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Player } from '../score-card/player.interface';
 import { FormArray, FormControl, FormBuilder } from '@angular/forms';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 @Component({
   selector: 'golf-player-row',
@@ -17,6 +17,7 @@ export class PlayerRowComponent implements OnInit {
   holes: FormArray;
   holeArray: number[];
   totalScore: number = 0;
+  playerDoc: AngularFirestoreDocument<Player>;
 
   constructor(
     private fb: FormBuilder,
@@ -24,7 +25,11 @@ export class PlayerRowComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.playerDoc = this.afs.doc<Player>(`games/${this.gameId}/players/${this.player.id}`);
     this.createHolesArray();
+    this.playerDoc.valueChanges().subscribe((player) => {
+      this.player = player;
+    });
   }
 
   createHolesArray(): void {
@@ -35,11 +40,12 @@ export class PlayerRowComponent implements OnInit {
       holeControl.valueChanges.subscribe((value) => {
         // test and set values to be added and subtracted
         const valueAdded = holeControl.value ? holeControl.value : 0;
-        const valueSubtracted = this.holeArray[holeNumber] ? this.holeArray[holeNumber] : 0;
-        // change to total score value
-        this.totalScore = this.totalScore - valueSubtracted + valueAdded;
+        const valueSubtracted = this.player.hole_scores[holeNumber] ? this.player.hole_scores[holeNumber] : 0;
+        // change total score value
+        this.player.total = this.player.total - valueSubtracted + valueAdded;
         // set this.holeArray so it holds the right value.
-        this.holeArray[holeNumber] = holeControl.value;
+        this.player.hole_scores[holeNumber] = holeControl.value ? holeControl.value : 0;
+        this.playerDoc.set(this.player);
       });
     });
   }
