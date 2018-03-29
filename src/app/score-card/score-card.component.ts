@@ -78,4 +78,8 @@ export class ScoreCardComponent implements OnInit {
     });
   }
 
+  endGame() {
+    throw new Error('endGame() not implemented yet');
+  }
+
 }

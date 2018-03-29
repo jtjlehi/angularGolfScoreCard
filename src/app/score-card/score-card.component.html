@@ -43,3 +43,9 @@
   (click)="addPlayer()" >
   Add player
 </button> 
+<button *ngIf="game"
+  mat-raised-button
+  color="secondary"
+  (click)="endGame()" >
+  End Game
+</button>
