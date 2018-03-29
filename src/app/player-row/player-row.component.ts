@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Player } from '../score-card/player.interface';
 import { FormArray, FormControl, FormBuilder } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { NamesService } from '../services/names.service';
 
 @Component({
   selector: 'golf-player-row',
@@ -21,14 +22,19 @@ export class PlayerRowComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private namesService: NamesService
   ) { }
 
   ngOnInit() {
+    this.namesService.changeName(this.player.name, this.player.id);
+    this.namesService.getMatchingNames(this.player.name);
     this.playerDoc = this.afs.doc<Player>(`games/${this.gameId}/players/${this.player.id}`);
     this.createHolesArray();
     this.playerDoc.valueChanges().subscribe((player) => {
       this.player = player;
+      this.namesService.changeName(this.player.name, this.player.id);
+      this.namesService.getMatchingNames(this.player.name);
     });
   }
 

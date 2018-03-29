@@ -24,6 +24,8 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AddPlayerDialogComponent } from './add-player-dialog/add-player-dialog.component';
 import { PlayerRowComponent } from './player-row/player-row.component';
+import { NameCheck } from './services/name.pipe';
+import { NamesService } from './services/names.service';
 
 
 @NgModule({
@@ -39,6 +41,7 @@ import { PlayerRowComponent } from './player-row/player-row.component';
     NewUserComponent,
     AddPlayerDialogComponent,
     PlayerRowComponent,
+    NameCheck
   ],
   entryComponents: [
     AddPlayerDialogComponent
@@ -57,7 +60,8 @@ import { PlayerRowComponent } from './player-row/player-row.component';
   providers: [
     GolfCourseService,
     LatLongService,
-    FirebaseService
+    FirebaseService,
+    NamesService
   ],
   bootstrap: [AppComponent]
 })

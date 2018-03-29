@@ -1,7 +1,7 @@
 <section>
   <div class='nameHole rowCell cell' >
     <!-- add a player name pipe -->
-    {{player.name}}
+    {{ player.name | nameCheck: player.id }}
   </div>
   <div class="holeCont">
     <div *ngFor="let hole of holes.controls; let i = index"
