@@ -46,7 +46,8 @@ import { EndGameDialogComponent } from './end-game-dialog/end-game-dialog.compon
     EndGameDialogComponent
   ],
   entryComponents: [
-    AddPlayerDialogComponent
+    AddPlayerDialogComponent,
+    EndGameDialogComponent
   ],
   imports: [
     CoreModule,

@@ -12,6 +12,7 @@ import { AddPlayerDialogComponent } from '../add-player-dialog/add-player-dialog
 import { Player } from './player.interface';
 import { Player as PlayerClass } from './player.class';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { EndGameDialogComponent } from '../end-game-dialog/end-game-dialog.component';
 
 
 @Component({
@@ -79,7 +80,7 @@ export class ScoreCardComponent implements OnInit {
   }
 
   endGame() {
-    throw new Error('endGame() not implemented yet');
+    const dialogRef = this.dialog.open(EndGameDialogComponent);
   }
 
 }
