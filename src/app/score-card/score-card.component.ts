@@ -6,7 +6,7 @@ import 'rxjs/add/operator/switchMap';
 import { GameService } from '../core/game.service';
 import { Observable } from 'rxjs/Observable';
 import { Game } from '../services/firebase/game.interface';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 
 import { AddPlayerDialogComponent } from '../add-player-dialog/add-player-dialog.component';
 import { Player } from './player.interface';
@@ -35,7 +35,8 @@ export class ScoreCardComponent implements OnInit {
     private router: Router,
     private gameService: GameService,
     private dialog: MatDialog,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -60,23 +61,29 @@ export class ScoreCardComponent implements OnInit {
   }
 
   addPlayer() {
-    this.newPlayerName = '';
-    this.newPlayerHandicap = '0';
-    const dialogRef = this.dialog.open(AddPlayerDialogComponent, {
-      data: {
-        name: this.newPlayerName,
-        handicap: this.newPlayerHandicap
-      }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.newPlayerName = result.name;
-        this.newPlayerHandicap = result.handicap;
-        const newPlayer: PlayerClass = new PlayerClass(result.name, result.handicap, {afs: this.afs, gameId: this.gameId});
-        newPlayer.addHoles(this.game.holes.length);
-        newPlayer.addToFirebase();
-      }
-    });
+    if (this.players.length >= 4) {
+      this.snackBar.open('To Many Characters', 'hide', {
+        duration: 2000
+      });
+    } else {
+      this.newPlayerName = '';
+      this.newPlayerHandicap = '0';
+      const dialogRef = this.dialog.open(AddPlayerDialogComponent, {
+        data: {
+          name: this.newPlayerName,
+          handicap: this.newPlayerHandicap
+        }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.newPlayerName = result.name;
+          this.newPlayerHandicap = result.handicap;
+          const newPlayer: PlayerClass = new PlayerClass(result.name, result.handicap, {afs: this.afs, gameId: this.gameId});
+          newPlayer.addHoles(this.game.holes.length);
+          newPlayer.addToFirebase();
+        }
+      });
+    }
   }
 
   endGame() {
