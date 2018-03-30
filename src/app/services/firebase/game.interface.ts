@@ -6,4 +6,5 @@ export interface Game {
     gameId: string;
     numOfHoles: number;
     holes: Holes[];
+    teeTypes: TeeType[];
 }
