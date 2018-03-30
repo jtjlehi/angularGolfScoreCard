@@ -29,7 +29,8 @@ export class GameService {
     const game = {
       gameId: gameId,
       numOfHoles: course.hole_count,
-      holes: course.holes
+      holes: course.holes,
+      teeTypes: course.tee_types
     };
     this.afs.doc<Game>(`games/${gameId}`).set(game);
     return game;
