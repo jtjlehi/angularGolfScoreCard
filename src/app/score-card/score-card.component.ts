@@ -80,7 +80,11 @@ export class ScoreCardComponent implements OnInit {
   }
 
   endGame() {
-    const dialogRef = this.dialog.open(EndGameDialogComponent);
+    const dialogRef = this.dialog.open(EndGameDialogComponent, {
+      data: {
+        players: this.players
+      }
+    });
   }
 
 }

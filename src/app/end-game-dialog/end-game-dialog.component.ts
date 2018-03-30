@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Player } from '../score-card/player.class';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'golf-end-game-dialog',
@@ -25,7 +26,9 @@ export class EndGameDialogComponent implements OnInit {
     rank: number
   };
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {players: Player[]}) {
+    this.players = data.players;
+  }
 
   ngOnInit() {
     const randIndex = Math.floor(Math.random() * this.endPhrases.length);
