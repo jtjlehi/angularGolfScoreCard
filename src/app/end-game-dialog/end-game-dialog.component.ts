@@ -25,7 +25,7 @@ export class EndGameDialogComponent implements OnInit {
     totalScore: number,
     parScore: number,
     rank: number
-  };
+  }[];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {players: Player[], par: number}) {
     this.players = data.players;
@@ -38,12 +38,7 @@ export class EndGameDialogComponent implements OnInit {
     this.players.sort((a, b) => {
       return  a.total - b.total;
     });
-    this.playerResults = this.players.map((player, index): {
-      name: string,
-      totalScore: number,
-      parScore: number,
-      rank: number
-    } => {
+    this.playerResults = this.players.map((player, index) => {
       return {
         name: player.name,
         totalScore: player.total,
@@ -51,6 +46,7 @@ export class EndGameDialogComponent implements OnInit {
         rank: index + 1
       };
     });
+    console.log(this.players);
   }
 
 }
