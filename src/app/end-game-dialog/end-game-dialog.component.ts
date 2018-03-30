@@ -36,7 +36,7 @@ export class EndGameDialogComponent implements OnInit {
     this.endPhrase = this.endPhrases[randIndex];
     console.log('players before sort: ', this.players);
     this.players.sort((a, b) => {
-      return b.total - a.total;
+      return  a.total - b.total;
     });
     this.playerResults = this.players.map((player, index): {
       name: string,
