@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Player } from '../score-card/player.class';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { Game } from '../services/firebase/game.interface';
 
 @Component({
   selector: 'golf-end-game-dialog',
@@ -26,13 +27,30 @@ export class EndGameDialogComponent implements OnInit {
     rank: number
   };
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {players: Player[]}) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {players: Player[], par: number}) {
     this.players = data.players;
   }
 
   ngOnInit() {
     const randIndex = Math.floor(Math.random() * this.endPhrases.length);
     this.endPhrase = this.endPhrases[randIndex];
+    console.log('players before sort: ', this.players);
+    this.players.sort((a, b) => {
+      return b.total - a.total;
+    });
+    this.playerResults = this.players.map((player, index): {
+      name: string,
+      totalScore: number,
+      parScore: number,
+      rank: number
+    } => {
+      return {
+        name: player.name,
+        totalScore: player.total,
+        parScore: player.total - player.handicap - this.data.par,
+        rank: index + 1
+      };
+    });
   }
 
 }
