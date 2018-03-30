@@ -1,3 +1,37 @@
 <h1 mat-dialog-title>
   {{ endPhrase }}
 </h1>
+<mat-dialog-content>
+  <table>
+    <thead class="header">
+      <th>
+        Player Name
+      </th>
+      <th>
+        Rank
+      </th>
+      <th>
+        Total
+      </th>
+      <th>
+        Par
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of playerResults" >
+        <td>
+          {{player.name}}
+        </td>
+        <td>
+          {{player.rank}}
+        </td>
+        <td>
+          {{player.totalScore}}
+        </td>
+        <td>
+          {{player.parScore}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-dialog-content>

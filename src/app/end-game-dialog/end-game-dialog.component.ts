@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Player } from '../score-card/player.class';
 
 @Component({
   selector: 'golf-end-game-dialog',
@@ -16,6 +17,13 @@ export class EndGameDialogComponent implements OnInit {
     "Not to shabby"
   ];
   endPhrase: string;
+  players: Player[];
+  playerResults: {
+    name: string,
+    totalScore: number,
+    parScore: number,
+    rank: number
+  };
 
   constructor() { }
 
