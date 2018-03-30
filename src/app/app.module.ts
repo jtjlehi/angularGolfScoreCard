@@ -26,6 +26,7 @@ import { AddPlayerDialogComponent } from './add-player-dialog/add-player-dialog.
 import { PlayerRowComponent } from './player-row/player-row.component';
 import { NameCheck } from './services/name.pipe';
 import { NamesService } from './services/names.service';
+import { EndGameDialogComponent } from './end-game-dialog/end-game-dialog.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { NamesService } from './services/names.service';
     NewUserComponent,
     AddPlayerDialogComponent,
     PlayerRowComponent,
-    NameCheck
+    NameCheck,
+    EndGameDialogComponent
   ],
   entryComponents: [
     AddPlayerDialogComponent
